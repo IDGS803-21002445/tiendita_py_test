@@ -6,7 +6,7 @@ def calcular_precio(precio, descuento):
 
 
 def calcular_iva(total):
-    return total * 1.15
+    return total * 1.16
 
 
 def validar_descuento(descuento):
