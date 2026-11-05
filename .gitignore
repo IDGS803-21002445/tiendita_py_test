@@ -28,9 +28,3 @@ __pycache__/
 build/
 
 dist/
-
-git add .
-
-git commit -m "Automatizar build del paquete Python"
-
-git push
