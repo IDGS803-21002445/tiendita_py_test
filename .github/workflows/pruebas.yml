@@ -2,9 +2,17 @@ name: Pruebas automatizadas
 
 on:
   push:
+<<<<<<< HEAD
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+=======
     branches: [master]
   pull_request:
     branches: [master]
+>>>>>>> 46e3d376b2e620633934b2050529b36fff38a50b
 
 jobs:
   pruebas:
@@ -17,10 +25,16 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Instalar dependencias
-        run: pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
 
-      - name: Ejecutar pruebas
-        run: python -m pytest -v
+      - name: Ejecutar pruebas unitarias
+        run: python -m pytest -v test_tiendita.py
+
+      - name: Ejecutar pruebas de integración
+        run: python -m pytest -v test_integration.py
+
+      - name: Ejecutar pruebas de sistema
+        run: python -m pytest -v test_main.py

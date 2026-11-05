@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+ 
+[project]
+name = "devops-tienda"
+version = "1.0.0"
+description = "Proyecto de tienda para practicas DevOps"
+requires-python = ">=3.10"
+ 
+[project.scripts]
+devops-tienda = "devops_tienda.cli:main"
+ 
+[tool.setuptools.packages.find]
+where = ["src"]

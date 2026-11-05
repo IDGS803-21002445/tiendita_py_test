@@ -1,0 +1,71 @@
+name: Build Python
+
+
+on:
+
+  push:
+
+  pull_request:
+
+  workflow_dispatch:
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+         python-version: '3.12'
+
+      - name: Instalar herramienta Build
+        run: python -m pip install build
+      - name: Construir paquete
+        run: python -m build
+      - name: Guardar distribuciones
+        uses: actions/upload-artifact@v4
+        with:
+         name: paquete-tienda
+         path: dist/
+         if-no-files-found: error
+
+
+    verificar:
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+
+        - name: Configurar Python
+          uses: actions/setup-python@v5
+          with:
+          python-version: '3.12'
+
+        - name: Descargar distribuciones
+          uses: actions/download-artifact@v4
+          with:
+            name: paquete-tienda
+            path: dist/
+
+        - name: Instalar wheel construido
+          run: python -m pip install dist/*.whl
+
+        - name: Verificar instalacion
+
+          run: |
+
+            python -c "from devops_tienda.tienda import calcular_precio; assert calcular_precio(200, 25) == 150"
+
+          printf '200
+
+          25
+
+          ' | devops-tienda
+
+          shell: bash

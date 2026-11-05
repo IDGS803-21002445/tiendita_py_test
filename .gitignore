@@ -17,3 +17,14 @@ __pycache__/
 # Archivos de los editores
 .vscode/
 .idea/
+
+
+.venv-build/
+
+*.pyc
+
+*.egg-info/
+
+build/
+
+dist/
