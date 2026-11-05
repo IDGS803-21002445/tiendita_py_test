@@ -17,3 +17,20 @@ __pycache__/
 # Archivos de los editores
 .vscode/
 .idea/
+
+
+.venv-build/
+
+*.pyc
+
+*.egg-info/
+
+build/
+
+dist/
+
+git add .
+
+git commit -m "Automatizar build del paquete Python"
+
+git push
