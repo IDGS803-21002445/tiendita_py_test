@@ -31,4 +31,4 @@ jobs:
         run: python -m pytest -v test_integration.py
 
       - name: Ejecutar pruebas de sistema
-        run: python -m pytest -v test_main.py
+        run: python -m pytest -v test_system.py
