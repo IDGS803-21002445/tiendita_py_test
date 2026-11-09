@@ -32,3 +32,9 @@ jobs:
 
       - name: Ejecutar pruebas de sistema
         run: python -m pytest -v test_system.py
+
+      - name: Ejecutar pruebas de aceptación
+        run: python -m pytest -v test_aceptacion.py
+
+      - name: Ejecutar pruebas de regresión
+        run: python -m pytest -v test_regresion.py
